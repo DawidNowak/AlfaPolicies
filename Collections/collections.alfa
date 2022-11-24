@@ -1,0 +1,24 @@
+﻿namespace Inriver.AccessControl.Policies.Collections
+{
+	import Oasis.Attributes
+
+	attribute Subject.Permission
+	{
+	    id = "Subject.Permission"
+	    category = subjectCat
+	    type = string
+	}
+
+	policy CollectionsPolicy
+	{
+		apply denyOverrides
+		target clause ResourceType == 'Collection'
+
+		rule AllowCreation
+		{
+			target clause Action == 'Create'
+			permit
+			condition Subject.Role == 'editor' or Subject.Permission == 'AddEntity'
+		}
+	}
+}
