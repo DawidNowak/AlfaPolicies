@@ -2,13 +2,6 @@ namespace Inriver.AccessControl.Policies.Log
 {
     import Oasis.Attributes
 
-    attribute Subject
-    {
-        id = "log.subject"
-        type = string
-        category = subjectCat
-    }
-
     attribute Message
     {
         id = "log.message"

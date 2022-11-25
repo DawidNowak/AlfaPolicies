@@ -23,23 +23,22 @@
 		rule AllowCreation
 		{
 			target clause Action == 'Create'
-			deny
-			condition not (Subject.Role == 'editor' or Subject.Permission == 'CreateCollection')
+			permit
+			condition Subject.Role == 'editor' or Subject.Permission == 'CreateCollection'
+		}
 
-			on deny
+		on deny
+		{
+			advice AuthorizationFailure
 			{
-				advice AuthorizationFailure
-				{
-                    AuthorizationFailureMessage = "Creating collections is available only for users with editor role or with CreateCollection permission"
-                }
-			}
+                AuthorizationFailureMessage = "Insufficient Permissions"
+            }
 		}
 
 		on permit
 		{
 			obligation Log
 			{
-				Log.Subject = Single(Subject.Identifier)
 				Log.Message = Single(ResourceType) + " was created"
 				Log.DateTime = Single(CurrentDateTime)
 			}
