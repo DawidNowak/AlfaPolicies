@@ -14,7 +14,7 @@
 
 	policy CollectionsPolicy
 	{
-		apply denyOverrides
+		apply denyUnlessPermit
 		target clause ResourceType == 'Collection'
 
 		rule AllowCreation
