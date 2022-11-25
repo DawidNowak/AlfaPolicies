@@ -21,13 +21,13 @@
 		{
 			target clause Action == 'Create'
 			deny
-			condition not (Subject.Role != 'editor' and Subject.Permission != 'CreateCollection')
+			condition Subject.Role != 'editor' and Subject.Permission != 'CreateCollection'
 
 			on deny
 			{
 				advice AuthorizationFailure
 				{
-                    AuthorizationFailureMessage = "Creating collections is available only for userw with editor role or with CreateCollection permission"
+                    AuthorizationFailureMessage = "Creating collections is available only for users with editor role or with CreateCollection permission"
                 }
 			}
 		}
