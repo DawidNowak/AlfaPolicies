@@ -20,8 +20,8 @@
 		rule AllowCreation
 		{
 			target clause Action == 'Create'
-			deny
-			condition Subject.Role != 'editor' and Subject.Permission != 'CreateCollection'
+			permit
+			condition Subject.Role == 'editor' or Subject.Permission == 'CreateCollection'
 
 			on deny
 			{
