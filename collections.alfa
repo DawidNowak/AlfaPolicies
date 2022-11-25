@@ -14,14 +14,14 @@
 
 	policy CollectionsPolicy
 	{
-		apply denyUnlessPermit
+		apply denyOverrides
 		target clause ResourceType == 'Collection'
 
 		rule AllowCreation
 		{
 			target clause Action == 'Create'
-			permit
-			condition Subject.Role == 'editor' or Subject.Permission == 'CreateCollection'
+			deny
+			condition not (Subject.Role == 'editor' or Subject.Permission == 'CreateCollection')
 
 			on deny
 			{
