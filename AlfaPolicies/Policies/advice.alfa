@@ -1,0 +1,13 @@
+﻿namespace Inriver.AccessControl.Policies.Advice
+{
+    category adviceCat = 'Advice'
+
+    attribute AuthorizationFailureMessage
+    {
+        id = "AuthorizationFailureMessage"
+        category = adviceCat
+        type = string
+    }
+
+    advice AuthorizationFailure = "AuthorizationFailure"
+}

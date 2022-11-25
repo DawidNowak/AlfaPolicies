@@ -1,6 +1,7 @@
-﻿namespace Inriver.AccessControl.Policies.Collections
+﻿namespace Inriver.AccessControl.Policies
 {
 	import Oasis.Attributes
+	import Inriver.AccessControl.Policies.Advice
 
 	attribute Subject.Permission
 	{
@@ -8,6 +9,8 @@
 	    category = subjectCat
 	    type = string
 	}
+
+	advice AccessDenied = "accessDeniedAdvice"
 
 	policy CollectionsPolicy
 	{
@@ -19,6 +22,16 @@
 			target clause Action == 'Create'
 			permit
 			condition Subject.Role == 'editor' or Subject.Permission == 'CreateCollection'
+
+			on deny
+			{
+				advice AuthorizationFailure
+				{
+                    AuthorizationFailureMessage = "Creating collections is available only for userw with editor role or with CreateCollection permission"
+                }
+			}
 		}
+
+
 	}
 }
