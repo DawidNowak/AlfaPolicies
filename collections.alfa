@@ -4,7 +4,6 @@
 	import Oasis.Functions.*
 
 	import Inriver.AccessControl.Policies.Advice
-	import Inriver.AccessControl.Policies.Log
 
 	attribute Subject.Permission
 	{
@@ -33,11 +32,6 @@
 			{
                 AuthorizationFailureMessage = "Insufficient Permissions"
             }
-		}
-
-		on permit
-		{
-			obligation Log { }
 		}
 	}
 }
