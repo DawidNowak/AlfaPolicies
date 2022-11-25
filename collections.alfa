@@ -37,11 +37,7 @@
 
 		on permit
 		{
-			obligation Log
-			{
-				Log.Message = Single(ResourceType) + " was created"
-				Log.DateTime = Single(CurrentDateTime)
-			}
+			obligation Log { }
 		}
 	}
 }
