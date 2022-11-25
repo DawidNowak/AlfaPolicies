@@ -1,4 +1,4 @@
-﻿namespace Inriver.AccessControl.Policies
+﻿namespace Inriver.AccessControl.Policies.Collections
 {
 	import Oasis.Attributes
 	import Inriver.AccessControl.Policies.Advice

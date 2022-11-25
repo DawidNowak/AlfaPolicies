@@ -1,5 +1,7 @@
 ﻿namespace Inriver.AccessControl.Policies
 {
+	import Inriver.AccessControl.Policies.Collections
+	
 	policyset global
 	{
 		apply firstApplicable
