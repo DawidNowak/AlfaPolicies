@@ -1,7 +1,10 @@
 ﻿namespace Inriver.AccessControl.Policies.Collections
 {
-	import Oasis.Attributes
+	import Oasis.Attributes.*
+	import Oasis.Functions.*
+
 	import Inriver.AccessControl.Policies.Advice
+	import Inriver.AccessControl.Policies.Log
 
 	attribute Subject.Permission
 	{
@@ -32,6 +35,14 @@
 			}
 		}
 
-
+		on permit
+		{
+			obligation Log
+			{
+				Log.Subject = Single(Subject.Identifier)
+				Log.Message = Single(ResourceType) + " was created"
+				Log.DateTime = Single(CurrentDateTime)
+			}
+		}
 	}
 }
